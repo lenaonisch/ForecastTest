@@ -1,0 +1,24 @@
+﻿
+<div class="container">
+    <div class="row align-items-center">
+        <div class="col-4">
+            @using (Html.BeginForm())
+            {
+                @Html.TextBox("cityName", (string)ViewBag.LastCity)
+            }
+        </div>
+        <div class="col-4">
+            @{ if (ViewBag.Forecast != null)
+                {
+                    Html.RenderPartial("_Forecast", (Fiducia.Models.ForecastData)ViewBag.Forecast);
+                }
+            }
+        </div>
+    </div>
+</div>
+@if (!string.IsNullOrEmpty(ViewBag.AlertMessage))
+{
+    <script type="text/javascript">
+        alert("@ViewBag.AlertMessage");
+    </script>
+}
